@@ -20,6 +20,13 @@ class _MyHomePage extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('article'),
+        actions: <Widget>[
+          IconButton(onPressed: () {}, icon: Icon(Icons.help_outline_rounded)),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.more_vert),
+          ),
+        ],
       ),
       body: _currentIndex == 0
           ? HomePage()
@@ -31,7 +38,8 @@ class _MyHomePage extends State<MyHomePage> {
         selectedItemColor: Colors.black45,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'お気に入り'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt_rounded), label: 'リスト'),
           BottomNavigationBarItem(
               icon: Icon(Icons.notifications), label: 'お知らせ'),
         ],
