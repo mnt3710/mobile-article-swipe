@@ -1,5 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:swipe_cards/swipe_cards.dart';
+import 'package:flutter/material.dart';
 import './tab/home_page.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -10,57 +9,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePage extends State<MyHomePage> {
-  List<SwipeItem> _swipeItems = <SwipeItem>[];
-  MatchEngine? _matchEngine;
+  int _currentIndex = 0;
 
-  List<String> _names = [
-    "Red",
-    "Blue",
-    "Green",
-    "Yellow",
-    "Orange",
-    "Grey",
-    "Purple",
-    "Pink"
-  ];
-
-  @override
-  void initState() {
-    for (int i = 0; i < _names.length; i++) {
-      _swipeItems.add(SwipeItem(content: Text(_names[i])));
-    }
-    _matchEngine = MatchEngine(swipeItems: _swipeItems);
-  }
+  void _onItemTapped(int index) => setState(() {
+        _currentIndex = index;
+      });
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.house), label: "home"),
-        BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.news), label: "article"),
-      ]),
-      tabBuilder: (BuildContext context, int index) {
-        return CupertinoTabView(
-          builder: (BuildContext context) {
-            return Center(
-                child: SwipeCards(
-              matchEngine: _matchEngine!,
-              onStackFinished: () => Text('ok'),
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  margin: EdgeInsets.all(300),
-                  width: 100,
-                  height: 100,
-                  color: Color(0xFFEFEFF4),
-                  child: Icon(CupertinoIcons.news),
-                );
-              },
-            ));
-          },
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('article'),
+      ),
+      body: _currentIndex == 0
+          ? HomePage()
+          : _currentIndex == 1
+              ? Text("like")
+              : Text("notice"),
+      bottomNavigationBar: BottomNavigationBar(
+        unselectedItemColor: Colors.black45,
+        selectedItemColor: Colors.black45,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
+          BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'お気に入り'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications), label: 'お知らせ'),
+        ],
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
