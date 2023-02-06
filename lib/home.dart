@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './tab/home_page.dart';
+import './page/home_page.dart';
+import './page/list_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class _MyHomePage extends State<MyHomePage> {
       body: _currentIndex == 0
           ? HomePage()
           : _currentIndex == 1
-              ? Text("like")
+              ? ListPage()
               : Text("notice"),
       bottomNavigationBar: BottomNavigationBar(
         unselectedItemColor: Colors.black45,
@@ -40,8 +41,6 @@ class _MyHomePage extends State<MyHomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
           BottomNavigationBarItem(
               icon: Icon(Icons.list_alt_rounded), label: 'リスト'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.notifications), label: 'お知らせ'),
         ],
         currentIndex: _currentIndex,
         onTap: _onItemTapped,
