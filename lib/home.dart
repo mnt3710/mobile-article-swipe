@@ -21,6 +21,7 @@ class _MyHomePage extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('article'),
+        elevation: 1,
         actions: <Widget>[
           IconButton(onPressed: () {}, icon: Icon(Icons.help_outline_rounded)),
           IconButton(
