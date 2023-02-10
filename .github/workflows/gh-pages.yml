@@ -36,7 +36,7 @@ jobs:
           flutter pub get
 
       - name: Build
-        run: flutter build web
+        run: flutter build web --web-renderer html --base-href /mobile-article-swipe/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
@@ -44,4 +44,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
-          node-version: "16"
