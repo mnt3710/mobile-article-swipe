@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "754008135574",
+    "project_id": "mobile-airticle-swipe",
+    "storage_bucket": "mobile-airticle-swipe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754008135574:android:4b9fc8332740dcc061afb7",
+        "android_client_info": {
+          "package_name": "com.example.frontend"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "754008135574-78b0p2ev780valglnfq03vk3nc5t74tc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAakqm2nn73une3w0ul-FA6IfBKjHrww-U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "754008135574-78b0p2ev780valglnfq03vk3nc5t74tc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
