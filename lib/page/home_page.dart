@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:swipe_cards/swipe_cards.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -43,6 +44,8 @@ class _HomePage extends State<HomePage> {
     "https://qiita.com/inajob/items/d04ef69eb43c4fba81d8"
   ];
 
+  String _fireData = "aa";
+
   @override
   void initState() {
     for (int i = 0; i < _title.length; i++) {
@@ -55,6 +58,12 @@ class _HomePage extends State<HomePage> {
               site: _site[i])));
     }
     _matchEngine = MatchEngine(swipeItems: _swipeItems);
+  }
+
+  void _changeFireData(data) {
+    setState(() {
+      _fireData = data;
+    });
   }
 
   @override
@@ -98,7 +107,19 @@ class _HomePage extends State<HomePage> {
             ),
           ],
         ),
-        const SizedBox(height: 30)
+        const SizedBox(height: 30),
+        MaterialButton(
+            onPressed: () => {
+                  FirebaseFirestore.instance
+                      .collection('airticle')
+                      .doc('8yjmATSQ2MM17lGJ1tci')
+                      .get()
+                      .then((ref) {
+                    _changeFireData(ref.get("airticle")[0]["title"]);
+                  })
+                },
+            child: Text("ほげ")),
+        Text(_fireData)
       ]),
     );
   }
