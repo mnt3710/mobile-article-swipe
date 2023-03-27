@@ -118,7 +118,14 @@ class _HomePage extends State<HomePage> {
                     _changeFireData(ref.get("airticle")[0]["title"]);
                   })
                 },
-            child: Text("ほげ")),
+            child: Text("取得")),
+        MaterialButton(
+            onPressed: () => {
+                  FirebaseFirestore.instance
+                      .doc('airticle/8yjmATSQ2MM17lGJ1tci')
+                      .set({'autofiel': "abc"}, SetOptions(merge: true))
+                },
+            child: Text("追加/更新")),
         Text(_fireData)
       ]),
     );
